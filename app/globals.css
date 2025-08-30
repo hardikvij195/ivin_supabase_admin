@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+
+
+@theme {
+
+  --font-poppins: Poppins, sans-serif;
+  --font-fredoka : Fredoka, sans-serif;
+
+   
+  --color-primary: #5E189D;
+  --color-primary-light: #F3E5FF;
+
+
+  --color-text-primary: #1C1C1C;
+  --color-text-secondary: #4D4D4D;
+
+
+  --color-white-50: #F9F9F9;
+  --color-white-100: #F6F6F6;
+  --color-white-200: #E4E4E4;
+  --color-white-300: #BDBDBD;
+}
+
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+
+body {
+  color: var(--color-text-primary);
+  background-color: #F6F6F6;
+  font-family: Poppins, sans-serif;
+  height: 100dvh;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
