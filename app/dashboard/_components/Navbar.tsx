@@ -366,7 +366,7 @@ const Navbar = ({ setCollapsed, collapsed }: NavbarProps) => {
     } else if (pathname === "/dashboard/seminar") {
       await handleExporSeminartFile();
     } else if (pathname === "/dashboard/seminar-signup") {
-      await handleExporSeminartSignupFile(seminarId, tab);
+      await handleExporSeminartSignupFile(seminarId ?? "", tab ?? "");
     } else if (pathname === "/dashboard/viptier") {
       await handleExporVipTiertFile();
     } else if (pathname === "/dashboard/details") {

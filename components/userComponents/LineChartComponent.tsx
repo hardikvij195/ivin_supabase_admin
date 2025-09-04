@@ -32,7 +32,6 @@ export const LineChartComponent = ({ data }: LineChartProps) => {
           strokeWidth={3}
           dot={{ 
             fill: '#5E189D', 
-            strokeWidth: 2, 
             r: 5,
             stroke: '#ffffff',
             strokeWidth: 2

@@ -23,7 +23,9 @@ export const PieChartComponent = ({ data }: PieChartProps) => {
           fill="#8884d8"
           dataKey="count"
           nameKey="plan"
-          label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+          label={({ name, percent }) =>
+            `${name}: ${((percent ?? 0) * 100).toFixed(0)}%`
+          }
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

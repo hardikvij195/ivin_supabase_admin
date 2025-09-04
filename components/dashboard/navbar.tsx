@@ -35,7 +35,7 @@ export default function Navbar() {
           <div className="ml-auto flex items-center gap-3">
             {/* Avatar */}
             {profile?.avatar_url ? (
-              <Image
+              <img
                 src={profile.avatar_url}
                 alt="Profile Picture"
                 width={36}

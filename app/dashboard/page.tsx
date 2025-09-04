@@ -21,37 +21,37 @@ type Metric = {
   alt: string;
 };
 
+type ProfileData = {
+  full_name?: string | null;
+  avatar_url?: string | null;
+};
+
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [cardData, setCardData] = useState<Card[]>([]);
   const [metrics, setMetrics] = useState<Metric[]>([]);
+   const [profile, setProfile] = useState<ProfileData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        /** ========= Top Cards ========= */
-        // Dealers count
+       
         const { count: dealerCount } = await supabaseBrowser
           .from("profiles")
           .select("*", { count: "exact", head: true })
           .eq("role", "dealer");
-
-        // Total revenue (sum of payments.amount)
         const { data: payments } = await supabaseBrowser
           .from("payments")
           .select("amount");
 
         const totalRevenue =
           payments?.reduce((sum: number, p: any) => sum + (p?.amount ?? 0), 0) || 0;
-
-        // Format as USD
         const formattedRevenue = new Intl.NumberFormat("en-US", {
           style: "currency",
           currency: "USD",
           minimumFractionDigits: 0,
         }).format(totalRevenue);
 
-        // Reports count (all-time)
         const { count: reportsCount } = await supabaseBrowser
           .from("carfax_reports")
           .select("*", { count: "exact", head: true });
@@ -93,21 +93,20 @@ export default function Dashboard() {
           },
         ]);
 
-        /** ========= Daily Metrics ========= */
-        // Reports generated today
+    
         const { count: reportsToday } = await supabaseBrowser
           .from("carfax_reports")
           .select("*", { count: "exact", head: true })
           .gte("created_at", new Date().toISOString().split("T")[0]); // since start of today
 
-        // New dealers today
+
         const { count: dealersToday } = await supabaseBrowser
           .from("profiles")
           .select("*", { count: "exact", head: true })
           .eq("role", "dealer")
           .gte("created_at", new Date().toISOString().split("T")[0]);
 
-        // Revenue today
+      
         const { data: todayPayments } = await supabaseBrowser
           .from("payments")
           .select("amount, created_at")
@@ -153,12 +152,23 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    // ✅ Fetch profile data from localStorage
+    const name = localStorage.getItem("user_name");
+    const avatar = localStorage.getItem("user_avatar");
+
+    setProfile({
+      full_name: name || "User",
+      avatar_url: avatar || null,
+    });
+  }, []);
+
   if (loading) return <DashboardSkeleton />;
 
   return (
     <div className="flex flex-col gap-5">
       <p className="font-fredoka font-semibold text-[24px] text-[#1C1C1C]">
-        Welcome, Dealer Name
+        Welcome, {profile?.full_name || "User"}
       </p>
 
       {/* Top Cards */}

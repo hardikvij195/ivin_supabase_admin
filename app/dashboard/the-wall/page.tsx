@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Modal from "@/app/dashboard/_components/Modal";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 // Types
 type CarfaxReport = {
@@ -261,13 +262,20 @@ export default function CarfaxWallPage() {
                       <p className="text-xs bg-purple-50 text-purple-700 px-3 py-1 rounded-lg mb-3">
                         Looking to Sell this {vehicleLabel} Soon
                       </p>
-                      <Button
-                        variant="outline"
-                        className="w-full rounded-full border-purple-600 text-purple-700 hover:bg-purple-50"
-                        onClick={() => handleChat(report.user_id!, report.id, vehicleLabel)}
-                      >
-                        Chat with Dealer
-                      </Button>
+                     <Link
+  href={`/dashboard/chat?dealerId=${report.user_id}&reportId=${report.id}&vehicle=${encodeURIComponent(vehicleLabel)}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="w-full"
+>
+  <Button
+    variant="outline"
+    className="w-full rounded-full border-purple-600 text-purple-700 hover:bg-purple-50"
+  >
+    Chat with Dealer
+  </Button>
+</Link>
+
                     </div>
                   </div>
                 );

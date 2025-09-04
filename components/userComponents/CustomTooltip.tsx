@@ -1,7 +1,9 @@
 // components/charts/CustomTooltip.tsx
 import { TooltipProps } from "recharts";
 
-export const CustomTooltip = ({ active, payload, label }: TooltipProps<any, any>) => {
+export const CustomTooltip = (props: TooltipProps<any, any>) => {
+  const { active, payload, label } = props as any;
+
   if (active && payload && payload.length) {
     return (
       <div className="bg-white p-4 shadow-lg rounded-lg border border-gray-200">
@@ -12,5 +14,6 @@ export const CustomTooltip = ({ active, payload, label }: TooltipProps<any, any>
       </div>
     );
   }
+
   return null;
 };

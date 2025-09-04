@@ -37,7 +37,7 @@ const sidebarItems: SidebarItemConfig[] = [
   { icon: FileBarChart, title: "Vehicle Reports", path: "/dashboard/vehicle-reports" },
   { icon: CreditCard, title: "Payment Management", path: "/dashboard/payment-management" },
   { icon: FileSpreadsheet, title: "Platform Reports", path: "/dashboard/platform-reports" },
-  { icon: Mail, title: "Contact Messages", path: "/dashboard/contact-us-messages" },
+  { icon: Mail, title: "Chat", path: "/dashboard/contact-us-messages" },
   { icon: MessageSquare, title: "The Wall", path: "/dashboard/the-wall" },
 ];
 
@@ -85,7 +85,7 @@ export default function Sidebar() {
         isMobile && !collapsed
           ? "fixed min-h-screen inset-y-0 left-0 top-16 z-50"
           : "static",
-        "max-h-screen flex flex-col justify-between", // ✅ allow logout at bottom
+        "max-h-screen flex flex-col justify-between",
         "border border-[#EAEAEA] bg-white shadow-md transition-[width] duration-300 ease-in-out",
         "lg:rounded-[16px] rounded-lg lg:ml-5 lg:my-5",
         baseWidth,
@@ -93,9 +93,9 @@ export default function Sidebar() {
         !mounted && "opacity-0"
       )}
     >
-      {/* Main content */}
+
       <div className="flex flex-col">
-        {/* Collapse / Expand */}
+  
         <div className="flex items-center justify-end px-2 py-3">
           <button
             type="button"
