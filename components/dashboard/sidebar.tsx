@@ -37,7 +37,8 @@ const sidebarItems: SidebarItemConfig[] = [
   { icon: FileBarChart, title: "Vehicle Reports", path: "/dashboard/vehicle-reports" },
   { icon: CreditCard, title: "Payment Management", path: "/dashboard/payment-management" },
   { icon: FileSpreadsheet, title: "Platform Reports", path: "/dashboard/platform-reports" },
-  { icon: Mail, title: "Chat", path: "/dashboard/contact-us-messages" },
+  { icon: Mail, title: "Chat", path: "/dashboard/dealer-chat" },
+    { icon: Mail, title: "Contact-Messages", path: "/dashboard/contact-us-messages" },
   { icon: MessageSquare, title: "The Wall", path: "/dashboard/the-wall" },
 ];
 
